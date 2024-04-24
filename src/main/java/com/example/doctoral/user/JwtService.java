@@ -36,7 +36,7 @@ public class JwtService implements UserDetailsService {
         authenticate(userName,userPassword);
         UserDetails userDetails=loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
-        User user=userRepo.findById(userName).get();
+        User user=userRepo.findByEmail(userName);
         return new JwtResponse(user,newGeneratedToken);
     }
     @Override

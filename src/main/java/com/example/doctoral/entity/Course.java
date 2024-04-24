@@ -1,30 +1,21 @@
 package com.example.doctoral.entity;
 
-
-
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+import javax.persistence.*;
 
 @Entity
-@Table(name = "address")
+@Table(name = "course")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String address_line1;
-    private String address_line2;
-    private String street;
-    private String postcode;
-    private String town;
-    private String county;
-    private String country;
+    private String name;
 }
