@@ -42,7 +42,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/role/create",
                 "/course/create",
                 "/course/get",
-                "/wish/create"
+                "/wish/create",
+                "/wish/get/{email}",
+                "/wish/get/id/{id}",
+                "/wish/update/status/{email}"
         ).permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()

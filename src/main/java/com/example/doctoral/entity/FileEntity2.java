@@ -8,12 +8,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "file_diplomas")
+@Table(name = "file_transcripts")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FileEntity {
+public class FileEntity2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,7 +22,7 @@ public class FileEntity {
     @Column(length = 50000000)
     private byte[] data;
 
-    public FileEntity(String name, String type, byte[] data) {
+    public FileEntity2(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
         this.data = data;
