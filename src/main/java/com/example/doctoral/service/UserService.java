@@ -37,43 +37,43 @@ public class UserService {
         return userRepo.save(user);
     }
 
-//    public void initDefaultRolesAndAdminUser(){
-//        Role adminRole=new Role();
-//        adminRole.setRole_name("admin");
-//        adminRole.setDescription("admin role for doctoral application");
-//        roleRepo.save(adminRole);
-//
-//        Role userRole=new Role();
-//        userRole.setRole_name("user");
-//        userRole.setDescription("user role for default role in green product application");
-//        roleRepo.save(userRole);
-//
-//        Address address=new Address();
-//        address.setId(1);
-//        address.setAddress_line1("1");
-//        address.setAddress_line2("Empire Student Hall");
-//        address.setStreet("Haywood Street");
-//        address.setPostcode("ST4 2RB");
-//        address.setTown("Stoke-on-Trent");
-//
-//
-//
-//        address.setCountry("United Kingdom");
-//        address.setCounty("Staffordshire");
-//
-//        addressRepo.save(address);
-//        User adminUser=new User();
-//        adminUser.setUser_name("admin123");
-//        adminUser.setFull_name("admin");
-//        adminUser.setPhone("07438867659");
-//        adminUser.setEmail("rifkhan94@yahoo.com");
-//        adminUser.setPassword(getEncodedPassword("admin123"));
-//        adminUser.setAddress(address);
-//        Set<Role> adminRoles=new HashSet<>();
-//        adminRoles.add(adminRole);
-//        adminUser.setRole(adminRoles);
-//        userRepo.save(adminUser);
-//    }
+    public User registerNewAdminUser(User user){
+        Role role=roleRepo.findById("committee").get();
+        Set<Role> roles=new HashSet<>();
+        roles.add(role);
+        user.setRole(roles);
+        user.setPassword(getEncodedPassword(user.getPassword()));
+        Address address=addressRepo.save(user.getAddress());
+        user.setAddress(address);
+        return userRepo.save(user);
+    }
+
+    public void initDefaultRolesAndAdminUser(){
+        User user=new User();
+        Role role=roleRepo.findById("committee").get();
+        Set<Role> roles=new HashSet<>();
+        roles.add(role);
+        user.setRole(roles);
+        user.setPhone("07438867659");
+        user.setEmail("doctoralphdapplication@gmail.com");
+        user.setName("saleeh");
+        user.setPassword(getEncodedPassword("abc123"));
+        Address address=new Address();
+        address.setId(1);
+        address.setAddress_line1("1");
+        address.setAddress_line2("Empire Student Hall");
+        address.setStreet("Haywood Street");
+        address.setPostcode("ST4 2RB");
+        address.setTown("Stoke-on-Trent");
+
+
+
+        address.setCountry("United Kingdom");
+        address.setCounty("Staffordshire");
+        user.setAddress(address);
+        userRepo.save(user);
+
+    }
 
     public String getEncodedPassword(String password){
         return passwordEncoder.encode(password);

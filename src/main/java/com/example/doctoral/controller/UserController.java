@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @RestController
 @RequestMapping(path = "/user")
 @RequiredArgsConstructor
@@ -23,5 +25,20 @@ public class UserController {
             throw new RuntimeException("This email already exist!");
         }
         return userService.registerNewUser(user);
+    }
+
+    @PostMapping(path = "/admin/register")
+    public User registerNewAdminUser(@RequestBody User user){
+
+        if(userRepo.findByEmail(user.getEmail())!=null)
+        {
+            throw new RuntimeException("This email already exist!");
+        }
+        return userService.registerNewAdminUser(user);
+    }
+
+    @PostConstruct
+    public void initDefaultAdminUser(){
+        userService.initDefaultRolesAndAdminUser();
     }
 }

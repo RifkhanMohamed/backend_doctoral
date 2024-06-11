@@ -39,13 +39,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers(
                 "/authenticate",
                 "/user/register",
+                "/user/admin/register",
                 "/role/create",
                 "/course/create",
                 "/course/get",
                 "/wish/create",
                 "/wish/get/{email}",
                 "/wish/get/id/{id}",
-                "/wish/update/status/{email}"
+                "/wish/update/status/{email}",
+                "/api/email/send"
         ).permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
