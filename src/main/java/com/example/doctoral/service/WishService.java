@@ -23,11 +23,27 @@ public class WishService {
         int updatedRows = wishRepo.updateStatus(email);
         return updatedRows > 0 ? "Status updated successfully" : "No wishes found for the user";
     }
+    public String updateStatusPreSelected(String email,String status) {
+        int updatedRows = wishRepo.updateStatusPreSelected(email,status);
+        return updatedRows > 0 ? "Status updated successfully" : "No wishes found for the user";
+    }
     public Optional<Wish> getById(Integer id){
         return wishRepo.findById(id);
     }
 
     public List<Wish> getAll(){
         return wishRepo.findAll();
+    }
+
+    public List<Wish> getAllByStatus(String status){
+        return wishRepo.findAllByStatus(status);
+    }
+
+    public List<Wish> getAllByStatusResults(){
+        return wishRepo.findAllByStatusResults();
+    }
+
+    public List<Wish> getAllByStatusResultsStructureManager(){
+        return wishRepo.findAllByStatusResultsStructureManager();
     }
 }

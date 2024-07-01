@@ -38,19 +38,44 @@ public class UserService {
     }
 
     public User registerNewAdminUser(User user){
-        Role role=roleRepo.findById("committee").get();
-        Set<Role> roles=new HashSet<>();
-        roles.add(role);
-        user.setRole(roles);
+//        Role role=roleRepo.findById("committee").get();
+//        Set<Role> roles=new HashSet<>();
+//        roles.add(role);
+//        user.setRole(roles);
         user.setPassword(getEncodedPassword(user.getPassword()));
         Address address=addressRepo.save(user.getAddress());
         user.setAddress(address);
         return userRepo.save(user);
     }
 
+    public List<User> getUsers(){
+        return userRepo.findAll();
+    }
+
+    public Number getAllStudentsCount(){
+        return userRepo.findAllUserCount();
+    }
+
+    public Number getPreAllStudentsCount(){
+        return userRepo.findAllPreUserCount();
+    }
+
+    public Number getAllStudentsStatusCount(String status){
+        return userRepo.findAllStatusCount(status);
+    }
+
+    public Number getAllPreSelectedStudentsCount(){
+        return userRepo.findAllPreSelectedUserCount();
+    }
+
+
+    public List<User> getAllStudents(){
+        return userRepo.findAllUser();
+    }
+
     public void initDefaultRolesAndAdminUser(){
         User user=new User();
-        Role role=roleRepo.findById("committee").get();
+        Role role=roleRepo.findById("super_admin").get();
         Set<Role> roles=new HashSet<>();
         roles.add(role);
         user.setRole(roles);

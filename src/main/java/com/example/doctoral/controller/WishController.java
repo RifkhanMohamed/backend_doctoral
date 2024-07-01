@@ -152,6 +152,11 @@ public class WishController {
         return wishService.updateStatus(email);
     }
 
+    @PutMapping(path = "/update/status/selected/{email}/{status}")
+    public String updateStatusPreSelected(@PathVariable String email,@PathVariable String status){
+        return wishService.updateStatusPreSelected(email,status);
+    }
+
     @GetMapping(path = "/get/id/{id}")
     public Optional<Wish> getById(@PathVariable Integer id){
         return wishService.getById(id);
@@ -160,5 +165,20 @@ public class WishController {
     @GetMapping(path = "/get/all")
     public List<Wish> getAll(){
         return wishService.getAll();
+    }
+
+    @GetMapping(path = "/get/all/status/{status}")
+    public List<Wish> getAllStatus(@PathVariable String status){
+        return wishService.getAllByStatus(status);
+    }
+
+    @GetMapping(path = "/get/all/status/results")
+    public List<Wish> getAllStatus(){
+        return wishService.getAllByStatusResults();
+    }
+
+    @GetMapping(path = "/get/all/status/results/structure")
+    public List<Wish> getAllStatusStructureManager(){
+        return wishService.getAllByStatusResultsStructureManager();
     }
 }
