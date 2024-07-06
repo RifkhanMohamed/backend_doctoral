@@ -179,4 +179,8 @@ public class Wish {
     private String applicationrefused;
     @Column(columnDefinition = "TEXT")
     private String applicationrefusedreason;
+    @Column(columnDefinition = "TEXT")
+    private String cotutelle;
+    @Column(columnDefinition = "TEXT")
+    private String cotutellereason;
 }

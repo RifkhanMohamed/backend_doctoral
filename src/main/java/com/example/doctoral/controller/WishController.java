@@ -181,4 +181,19 @@ public class WishController {
     public List<Wish> getAllStatusStructureManager(){
         return wishService.getAllByStatusResultsStructureManager();
     }
+
+    @GetMapping(path = "/get/all/status/results/director")
+    public List<Wish> getAllStatusDirector(){
+        return wishService.getAllByStatusResultsDirector();
+    }
+
+    @GetMapping(path = "/get/all/status/results/exemption")
+    public List<Wish> getAllStatusLabManager(){
+        return wishService.getAllByStatusResultsLab();
+    }
+
+    @GetMapping(path = "/get/all/status/results/exemption/dean")
+    public List<Wish> getAllStatusDean(){
+        return wishService.getAllByStatusResultsDean();
+    }
 }

@@ -46,4 +46,17 @@ public class WishService {
     public List<Wish> getAllByStatusResultsStructureManager(){
         return wishRepo.findAllByStatusResultsStructureManager();
     }
+
+    public List<Wish> getAllByStatusResultsDirector(){
+        return wishRepo.findAllByStatusResultsDirector();
+    }
+
+    public List<Wish> getAllByStatusResultsLab(){
+        return wishRepo.getAllByStatusResultsLab();
+    }
+
+    public List<Wish> getAllByStatusResultsDean(){
+        return wishRepo.getAllByStatusResultsDean();
+    }
+
 }
